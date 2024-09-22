@@ -1,8 +1,8 @@
 package set1
 
 import (
-	"testing"
 	"bytes"
+	"testing"
 )
 
 func TestFixedXor(t *testing.T) {

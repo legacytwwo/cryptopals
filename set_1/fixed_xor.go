@@ -21,7 +21,7 @@ func CreateXorTwoBuffers(buf1, buf2 []byte) ([]byte, error) {
 	result := make([]byte, len(decodedBuf1))
 
 	for i, v := range decodedBuf1 {
-		result[i] = v^decodedBuf2[i]
+		result[i] = v ^ decodedBuf2[i]
 	}
 
 	return HexEncode(result), nil
