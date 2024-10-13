@@ -24,7 +24,11 @@ func TestSingleByteXorCipher(t *testing.T) {
 
 	for _, test := range tests {
 		t.Run(test.name, func(t *testing.T) {
-			ret, _, err := DecodeSingleByteXorCipher(test.input)
+			inp, err := HexDecode(test.input)
+			if err != nil {
+				t.Errorf("failed to decode input: %s", err)
+			}
+			ret, _, _, err := DecodeSingleByteXorCipher(inp)
 			if test.shouldError {
 				if err == nil {
 					t.Error("expected: error, got: nil")

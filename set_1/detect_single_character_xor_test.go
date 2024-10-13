@@ -29,7 +29,8 @@ func TestDetectSingleCharXor(t *testing.T) {
 		}
 		data := strings.Split(string(file), "\n")
 		for _, v := range data {
-			input = append(input, []byte(v))
+			encodedStr, _ := HexDecode([]byte(v))
+			input = append(input, encodedStr)
 		}
 		ret, err := DetectSingleCharXor(input)
 		if err != nil {

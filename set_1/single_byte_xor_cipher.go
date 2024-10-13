@@ -1,18 +1,14 @@
 package set1
 
-func DecodeSingleByteXorCipher(buf []byte) ([]byte, int, error) {
-	decodedBuf, err := HexDecode(buf)
-	if err != nil {
-		return nil, 0, err
-	}
-
+func DecodeSingleByteXorCipher(buf []byte) ([]byte, int, int, error) {
 	var result []byte
 	var bestScore int
+	var key int
 
 	for i := 0; i < 127; i++ {
-		xoredText := make([]byte, len(decodedBuf))
+		xoredText := make([]byte, len(buf))
 
-		for j, v := range decodedBuf {
+		for j, v := range buf {
 			xoredText[j] = v ^ byte(i)
 		}
 
@@ -20,10 +16,10 @@ func DecodeSingleByteXorCipher(buf []byte) ([]byte, int, error) {
 		if score > bestScore {
 			result = xoredText
 			bestScore = score
+			key = i
 		}
 	}
-
-	return result, bestScore, nil
+	return result, bestScore, key, nil
 }
 
 func scoreEngText(text []byte) int {

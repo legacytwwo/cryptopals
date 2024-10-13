@@ -10,5 +10,5 @@ func RepeatingKeyXor(input, key []byte) []byte {
 		result = append(result, v^key[p])
 		p += 1
 	}
-	return HexEncode(result)
+	return result
 }

@@ -4,7 +4,7 @@ func DetectSingleCharXor(buffers [][]byte) ([]byte, error) {
 	var result []byte
 	var bestScore int
 	for _, v := range buffers {
-		str, score, err := DecodeSingleByteXorCipher(v)
+		str, score, _, err := DecodeSingleByteXorCipher(v)
 		if err != nil {
 			return nil, err
 		}

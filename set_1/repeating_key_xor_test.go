@@ -22,7 +22,7 @@ func TestRepeatingKeyXor(t *testing.T) {
 
 	for _, test := range tests {
 		ret := RepeatingKeyXor(test.input, test.key)
-		if !bytes.Equal(ret, test.expectedOutput) {
+		if !bytes.Equal(HexEncode(ret), test.expectedOutput) {
 			t.Errorf("expected: %s, got: %s", test.expectedOutput, ret)
 		}
 	}
